@@ -101,3 +101,5 @@ ENV/
 
 # Sample image
 sample-out.png
+
+.idea
