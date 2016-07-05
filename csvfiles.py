@@ -1,7 +1,7 @@
 import csv
 
 
-class CSVFile:
+class CSVfiles:
 
     def __init__(self, filename):
         self.filename = filename
