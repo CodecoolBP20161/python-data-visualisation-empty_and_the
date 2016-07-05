@@ -1,9 +1,9 @@
 from PIL import Image
 from PIL import ImageDraw
-from csv_handler import CSVFile
-from sql_handler import Databases
+from csvfiles import CSVfiles
+from databases import Databases
 
-csv_file = CSVFile("admin_data.csv")
+csv_file = CSVfiles("admin_data.csv")
 list_data = csv_file.get_data()
 database = Databases(list_data[0], list_data[1], list_data[2], list_data[3])
 database.connect_db()
