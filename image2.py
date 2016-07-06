@@ -10,7 +10,7 @@ database = Databases(list_data[0], list_data[1], list_data[2], list_data[3])
 database.connect_db()
 Databases.create_table('base_data.sql')
 sometext = database.run_sql_command("""SELECT company_name FROM project WHERE id = 1;""")
-somenumber = database.run_sql_command("""SELECT budget_value FROM project WHERE id = 1;""")
+somenumber = database.run_sql_command("""SELECT name FROM project WHERE id = 3;""")
 
 img = Image.new("RGB", (500, 500), "white")
 draw = ImageDraw.Draw(img)
