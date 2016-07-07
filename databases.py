@@ -1,15 +1,19 @@
 import psycopg2
 import subprocess
+from csvfiles import CSVfiles
 
 
 class Databases:
 
-    def __init__(self, dbname, username, host, password):
-        self.dbname = dbname
-        self.username = username
-        self.host = host
-        self.password = password
-        self.connect_str = "dbname={0} user={1} host={2} password={3}".format(dbname, username, host, password)
+    def __init__(self, filename, table_name):
+        self.filename = filename
+        self.table_name = table_name
+        self.dbname = CSVfiles(self.filename).get_data()[0]
+        self.username = CSVfiles(self.filename).get_data()[1]
+        self.host = CSVfiles(self.filename).get_data()[2]
+        self.password = CSVfiles(self.filename).get_data()[3]
+        self.connect_str = "dbname={0} user={1} host={2} password={3}".format(self.dbname, self.username, self.host,
+                                                                              self.password)
         self.conn = None
 
     def connect_db(self):
@@ -18,7 +22,9 @@ class Databases:
             self.conn.autocommit = True
         except Exception as e:
             print("Uh oh, can't connect. Invalid dbname, user or password?")
-            print(e)
+        else:
+            Databases.create_table(self.table_name)
+        return self
 
     def run_sql_command(self, query):
         cursor = self.conn.cursor()
