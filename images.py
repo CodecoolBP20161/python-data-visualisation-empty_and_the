@@ -1,9 +1,12 @@
+import os
 from PIL import Image
 from PIL import ImageDraw
 from texts import Texts
 from random import randint
 from projects import Projects
 from databases import Databases
+
+current_file_path = os.path.dirname(os.path.abspath(__file__))
 
 
 class Images:
@@ -27,7 +30,7 @@ class Images:
         projects_object_list = Projects.get_projects_object_list(list_of_arguments, list_from_sql)
         list_text_objects = []
         for element in projects_object_list:
-            list_text_objects.append(Texts(element.name, "arial.ttf", int(element.budget_eur/200), element.main_color[0],
+            list_text_objects.append(Texts(element.name, current_file_path + "/fonts/Prototype.ttf", int(element.budget_eur/200), element.main_color[0],
                                      element.main_color[1], element.main_color[2]))
         for element in list_text_objects:
             element.draw_text(randint(0, x_image), randint(0, y_image), self)
