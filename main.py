@@ -6,12 +6,24 @@ def main():
     database = Databases("admin_data.csv", "base_data.sql")
     database.connect_db()
 
-    image_1 = Images("image_1.png", "RGB", 550, 500, "white")
-    image_1.draw_on_image_version_1(database, 550, 500)
-    image_1.save_image()
+    while True:
+        image_1 = Images("image_1.png", "RGB", 500, 500, "white")
+        try:
+            image_1.draw_on_image_version_1(database, 500, 500)
+        except:
+            continue
+        else:
+            image_1.save_image()
+            break
 
-    image_2 = Images("image_2.png", "RGB", 550, 500, "black")
-    image_2.draw_on_image_version_2(database, 550, 500)
-    image_2.save_image()
+    while True:
+        image_2 = Images("image_2.png", "RGB", 500, 500, "black")
+        try:
+            image_2.draw_on_image_version_2(database, 500, 500)
+        except:
+            continue
+        else:
+            image_2.save_image()
+            break
 
 main()

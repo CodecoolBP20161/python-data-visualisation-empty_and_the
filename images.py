@@ -41,13 +41,60 @@ class Images:
                     list_from_sql[j][2].append(list_from_sql_2[i][1])
         companies_object_list = Companies.get_companies_object_list(list_of_arguments, list_from_sql)
         list_text_objects = []
+        list_doge = ["so", "much", "very", "many", "wow", "such", "good"]
         for element in companies_object_list:
-            list_text_objects.append(Texts(element.name, self.current_file_path + "/fonts/Prototype.ttf",
-                                           element.number_of_projects * 10, element.avg_color[0], element.avg_color[1],
-                                           element.avg_color[2]))
+            list_text_objects.append(
+                Texts(list_doge[randint(0, 6)] + ' ' + element.name, self.current_file_path + "/fonts/Prototype.ttf",
+                      int(element.number_of_projects * 5),
+                      element.avg_color[0],
+                      element.avg_color[1], element.avg_color[2]))
+        list_text_objects.sort(key=lambda x: x.font_size, reverse=True)
+        text = Texts("""─────────▄──────────────▄
+────────▌▒█───────────▄▀▒▌
+────────▌▒▒▀▄───────▄▀▒▒▒▐
+───────▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+─────▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+───▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀██▀▒▌
+──▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+──▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+─▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+─▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+─▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒▒▒░░░░░░▒▒▒▒▌
+▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+─▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+─▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+──▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+ ───▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+───▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀""", "arial.ttf", 14, 0, 0, 0)
+        self.occupied_x.append(set(range(0, 280)))
+        self.occupied_y.append(set(range(100, 420)))
+        text.draw_text(0, 100, self)
+        k = 0
         for element in list_text_objects:
-            element.draw_text(randint(0, x_image), randint(0, y_image), self)
-
+            while True:
+                break_boolean = False
+                x_text = randint(0, x_image-element.text_size[0])
+                y_text = randint(0, y_image-element.text_size[1])
+                x_text_end = x_text + element.text_size[0]
+                y_text_end = y_text + element.text_size[1]
+                set_x_element = set(range(x_text, x_text_end))
+                set_y_element = set(range(y_text, y_text_end))
+                for i in range(len(self.occupied_x)):
+                    if (set_x_element & self.occupied_x[i]) != set() and (set_y_element & self.occupied_y[i]) != set():
+                        break_boolean = False
+                        k += 1
+                        if k > 20000:
+                            raise RuntimeError("Image creation aborted!")
+                        break
+                    else:
+                        break_boolean = True
+                if break_boolean:
+                    break
+            self.occupied_x.append(set_x_element)
+            self.occupied_y.append(set_y_element)
+            element.draw_text(x_text, y_text, self)
 
     def draw_on_image_version_2(self, database, x_image, y_image):
         list_of_arguments = ["name", "main_color", "budget_value", "budget_currency"]
@@ -57,10 +104,10 @@ class Images:
         list_text_objects = []
         for element in projects_object_list:
             list_text_objects.append(
-                Texts(element.name, self.current_file_path + "/fonts/Prototype.ttf", int(element.budget_eur / 300),
+                Texts(element.name, self.current_file_path + "/fonts/Prototype.ttf", int(element.budget_eur / 250),
                       element.main_color[0],
                       element.main_color[1], element.main_color[2]))
-
+        list_text_objects.sort(key=lambda x: x.font_size, reverse=True)
         k = 0
         for element in list_text_objects:
             while True:
