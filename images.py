@@ -67,7 +67,7 @@ class Images:
 ──▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
  ───▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
 ───▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
-──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀""", "arial.ttf", 14, 0, 0, 0)
+──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀""", self.current_file_path + "/fonts/Arial.ttf", 14, 0, 0, 0)
         self.occupied_x.append(set(range(0, 280)))
         self.occupied_y.append(set(range(100, 420)))
         text.draw_text(0, 100, self)
