@@ -1,5 +1,6 @@
 from images import Images
 from databases import Databases
+from PIL import Image
 
 
 def main():
@@ -15,6 +16,8 @@ def main():
                 continue
             else:
                 image_1.save_image()
+                img = Image.open('image_1.png')
+                img.show()
                 break
     elif command == "2":
         while True:
@@ -25,6 +28,8 @@ def main():
                 continue
             else:
                 image_2.save_image()
+                img = Image.open('image_2.png')
+                img.show()
                 break
 
 main()

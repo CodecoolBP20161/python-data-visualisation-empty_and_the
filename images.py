@@ -18,8 +18,8 @@ class Images:
         self.img = Image.new(self.rgb, (self.width, self.height), self.color)
         self.draw = ImageDraw.Draw(self.img)
         self.current_file_path = os.path.dirname(os.path.abspath(__file__))
-        self.occupied_x = [{10000, 10001}]
-        self.occupied_y = [{10000, 10001}]
+        self.occupied_x = [{"a", "b"}]
+        self.occupied_y = [{"a", "b"}]
 
     def save_image(self):
         self.img.save(self.name)
