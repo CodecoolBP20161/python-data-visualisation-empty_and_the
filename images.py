@@ -41,36 +41,36 @@ class Images:
                     list_from_sql[j][2].append(list_from_sql_2[i][1])
         companies_object_list = Companies.get_companies_object_list(list_of_arguments, list_from_sql)
         list_text_objects = []
-        list_doge = ["so", "much", "very", "many", "wow", "such", "good"]
+        list_doge = ["so", "much", "very", "many", "wow", "such", "good", "how"]
         for element in companies_object_list:
             list_text_objects.append(
-                Texts(list_doge[randint(0, 6)] + ' ' + element.name, self.current_file_path + "/fonts/Prototype.ttf",
+                Texts(list_doge[randint(0, 7)] + ' ' + element.name, self.current_file_path + "/fonts/Prototype.ttf",
                       int(element.number_of_projects * 5),
                       element.avg_color[0],
                       element.avg_color[1], element.avg_color[2]))
         list_text_objects.sort(key=lambda x: x.font_size, reverse=True)
-        text = Texts("""─────────▄──────────────▄
-────────▌▒█───────────▄▀▒▌
-────────▌▒▒▀▄───────▄▀▒▒▒▐
-───────▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
-─────▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
-───▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀██▀▒▌
-──▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
-──▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
-─▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
-─▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
-─▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+        text = Texts("""                   ▄                            ▄
+                ▌▒█                      ▄▀▒▌
+                ▌▒▒▀▄              ▄▀▒▒▒▐
+              ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+          ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+      ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀██▀▒▌
+    ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+    ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+  ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+  ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+  ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
 ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒▒▒░░░░░░▒▒▒▒▌
 ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
-─▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
-─▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-──▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
- ───▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
-───▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
-──▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀""", self.current_file_path + "/fonts/Arial.ttf", 14, 0, 0, 0)
+  ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+  ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+    ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+       ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+      ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+    ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀""", self.current_file_path + "/fonts/Arial.ttf", 14, 0, 0, 0)
         self.occupied_x.append(set(range(0, 280)))
-        self.occupied_y.append(set(range(100, 420)))
-        text.draw_text(0, 100, self)
+        self.occupied_y.append(set(range(200, 500)))
+        text.draw_text(0, 200, self)
         k = 0
         for element in list_text_objects:
             while True:
