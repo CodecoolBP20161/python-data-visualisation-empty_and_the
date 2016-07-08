@@ -104,7 +104,7 @@ class Images:
         list_text_objects = []
         for element in projects_object_list:
             list_text_objects.append(
-                Texts(element.name, self.current_file_path + "/fonts/Prototype.ttf", int(element.budget_eur / 250),
+                Texts(element.name, self.current_file_path + "/fonts/28_days_later.ttf", int(element.budget_eur / 250),
                       element.main_color[0],
                       element.main_color[1], element.main_color[2]))
         list_text_objects.sort(key=lambda x: x.font_size, reverse=True)
