@@ -72,29 +72,13 @@ class Images:
         for element in companies_object_list:
             list_text_objects.append(
                 Texts(list_doge[randint(0, 7)] + ' ' + element.name, self.current_file_path + "/fonts/Prototype.ttf",
-                      int(element.number_of_projects * 5),
+                      int(element.number_of_projects * 6),
                       element.avg_color[0],
                       element.avg_color[1], element.avg_color[2]))
-        text = Texts("""              ▄            ▄
-             ▌▒█         ▄▀▒▌
-            ▌▒▒▀▄      ▄▀▒▒▒▐
-          ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
-        ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
-      ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀██▀▒▌
-    ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
-    ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
-  ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
-  ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
-  ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
- ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒▒▒░░░░░░▒▒▒▒▌
- ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
-  ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
-  ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-    ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
-       ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
-      ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
-    ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀""", self.current_file_path + "/fonts/Cousine-Regular.ttf", 14, 0, 0, 0)
-        self.occupied_x.append(set(range(0, 280)))
+        file_title = open("doge_head.txt", "r")
+        doge_head = file_title.read()
+        text = Texts(doge_head, self.current_file_path + "/fonts/Cousine-Regular.ttf", 14, 0, 0, 0)
+        self.occupied_x.append(set(range(0, 220)))
         self.occupied_y.append(set(range(200, 500)))
         text.draw_text(0, 200, self)
         self.draw_list_text_objects(list_text_objects, x_image, y_image)
