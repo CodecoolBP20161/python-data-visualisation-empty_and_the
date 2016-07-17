@@ -16,7 +16,7 @@ def main():
                 image_1 = Images("image_1.png", "RGB", 500, 500, "white")
                 try:
                     image_1.draw_on_image_version_1(database, 500, 500)
-                except:
+                except RuntimeError:
                     continue
                 else:
                     image_1.save_image()
