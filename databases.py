@@ -20,8 +20,8 @@ class Databases:
         try:
             self.conn = psycopg2.connect(self.connect_str)
             self.conn.autocommit = True
-        except Exception as e:
-            print("Uh oh, can't connect. Invalid dbname, user or password?")
+        except:
+            raise ConnectionError
         else:
             Databases.create_table(self.table_name)
         return self
