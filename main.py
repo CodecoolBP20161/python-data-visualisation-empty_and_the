@@ -7,10 +7,10 @@ def main():
     database = Databases("admin_data.csv", "base_data.sql")
     try:
         database.connect_db()
+        command = input("Please select an image number(1 or 2):")
     except ConnectionError:
         print("Uh oh, can't connect. Invalid dbname, user or password?")
     else:
-        command = input("Please select an image number(1 or 2):")
         if command == "1":
             while True:
                 image_1 = Images("image_1.png", "RGB", 500, 500, "white")
@@ -35,5 +35,7 @@ def main():
                     img = Image.open('image_2.png')
                     img.show()
                     break
+        else:
+            print("Not a valid number")
 
 main()
